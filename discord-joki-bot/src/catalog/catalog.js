@@ -178,7 +178,6 @@ async function setupCatalog(game, channel) {
 // ==========================================
 
 async function refreshCatalog(targetGameId = null) {
-
     const games = targetGameId
         ? db.prepare(`SELECT * FROM games WHERE id = ?`).all(targetGameId)
         : db.prepare(`SELECT * FROM games ORDER BY id ASC`).all();

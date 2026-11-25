@@ -36,11 +36,11 @@ for (const key of requiredEnv) {
 
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages
     ]
 });
 
-// Menghubungkan client dengan catalog.js
 global.discordClient = client;
 
 // ======================================

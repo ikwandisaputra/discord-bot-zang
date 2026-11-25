@@ -15,7 +15,7 @@ module.exports = {
                 await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
                 try {
-                    const gameId = interaction.customId.replace("custom_catalog_modal_", "");
+                    const gameId = Number(interaction.customId.replace("custom_catalog_modal_", ""));
                     const customText = interaction.fields.getTextInputValue("custom_catalog_text");
 
                     // Jika dikosongkan, simpan NULL agar kembali memakai list /add-joki biasa
@@ -27,7 +27,7 @@ module.exports = {
                         WHERE id = ?
                     `).run(valueToSave, gameId);
 
-                    await refreshCatalog();
+                    await refreshCatalog(gameId);
 
                     return interaction.editReply({
                         content: valueToSave
